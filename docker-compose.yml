@@ -1,0 +1,13 @@
+version: '3'
+services:
+    node:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        volumes:
+            - ./frontend:/usr/src/app
+        command: sh -c "cd react-front && yarn start"
+        ports:
+            - "4000:4000"
+        environment:
+            PORT: 4000
