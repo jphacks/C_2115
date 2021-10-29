@@ -11,3 +11,24 @@ services:
             - "4000:4000"
         environment:
             PORT: 4000
+    dbapi:
+        build:
+            context: ./backend/fastapi
+            dockerfile: Dockerfile
+        volumes:
+            - ./backend/fastapi:/backend/fastapi
+        command: uvicorn server:app --reload --workers 1 --host 0.0.0.0 --port 8080
+        links:
+            - mongodb #mongodbとの連携
+        depends_on: #mongodbを先に実行する
+            - mongodb
+        ports:
+            - "8080:8080"
+    mongodb:
+        image: mongo
+        container_name: mongodb
+        volumes:
+            - mongodata
+volumes:
+    mongodata:
+        driver: local 
