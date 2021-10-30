@@ -29,12 +29,12 @@ async def object_detection_file(file: UploadFile = File(...)):
     # image.save(name)
     image.filename = name
     label = model(image)
-    i
-    return {"filename": len(file)}
-
-@app.post("/api/searchlabel")
-async def serach_file_labels(file: UploadFile = File(...)):
-    return {"api": len(file)}
+    
+    return 
+"""
+#@app.post("/api/searchlabel")
+#async def serach_file_labels(file: UploadFile = File(...)):
+#    return {"api": len(file)}
 
 
 #データを画像に変換する
@@ -52,4 +52,4 @@ def base64_encode_img(img):
     img_byte = buffered.getvalue()
     encoded_img = "data:image/png;base64," + base64.b64encode(img_byte).decode()
     return encoded_img
-"""
+

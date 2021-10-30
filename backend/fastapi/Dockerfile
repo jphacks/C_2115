@@ -13,5 +13,6 @@ RUN set -eux \
  && pip install --no-cache-dir --trusted-host pypi.python.org -r /backend/fastapi/requirements.txt \
  && apk del build-base \
  && rm -rf /root/.cache/pip
+ && apk install git
 
 COPY . /backend/fastapi
